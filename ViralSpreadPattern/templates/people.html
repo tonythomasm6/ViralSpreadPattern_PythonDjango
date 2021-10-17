@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+    <style>
+        #person-table tr:nth-child(even){background-color: #f2f2f2;}
+        #person-table tr:hover {background-color: #ddd;}
+    </style>
+
+
+</head>
+<br>
+
+ <button type="submit" style="background-color: #008CBA;" onclick="location.href='/viral/'">Back</button>
+</br>
+</br>
+<table border="1" id="person-table">
+    <tr style="background-color:#70bcfe">
+        <th>Person</th>
+        <th>Contacts</th>
+    </tr>
+    {%for key,value in all_people.items%}
+    <tr>
+    <td>
+        {{key}}
+
+    </td>
+        <td>
+          {% for val in value %}
+            {{val}} ,
+              {%endfor%}
+        </td>
+</tr>
+   {%endfor%}
+</table>
+
+
+
+
+
+</body>
+</html>

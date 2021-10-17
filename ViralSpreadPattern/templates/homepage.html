@@ -1,0 +1,43 @@
+<br lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viral Pattern</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<h3 style="text-align:center;color:blue">Viral Spread Pattern</h3>
+<form action="/viral/findPattern/" method="POST" style="margin-left:50px;">{% csrf_token %}
+    <a href="/viral/load_people/">Click to see all person</a>
+  <div class="form-group" style="margin-top:20px">
+    <label for="days">No of Days</label>
+    <input type="text" class="form-control col-lg-3" id="days" name="days" aria-describedby="daysHelp" placeholder="Days">
+    <small id="daysHelp" class="form-text text-muted">Enter days for which the viral pattern is to be seen</small>
+  </div>
+  <div class="form-group">
+    <label for="probability">Probability</label>
+    <input type="text" class="form-control col-lg-3" id="probability"  name="probability" aria-describedby="probHelp"  placeholder="Probability of Meet">
+      <small id="probHelp" class="form-text text-muted">Enter days for which the viral pattern is to be seen. Range:0-1</small>
+  </div>
+  <div class="form-group">
+      <label for="initialHealth">Health of Patient Zero</label>
+    <input type="text" class="form-control col-lg-3" id="initialHealth" name="inithealth" aria-describedby="healthHelp" placeholder="Health of patient Zero">
+    <small id="healthHelp" class="form-text text-muted">Enter health of patient zero. Range:0-100</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+{% block graph  %}
+
+<br>
+<br>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+</svg>
+This application provides an approximate viral spread pattern in a group of people. The calculation is based on how affected <br />
+the initial patient is , how probable is it that the infected person will meet other persons in his community, <br>
+Pattern is generated as graph for the entered number of days
+{% endblock %}
+</body>
+</html>
